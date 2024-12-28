@@ -20,6 +20,7 @@ from neuralnoise.models import ContentAnalysis, StudioConfig, PodcastScript
 from neuralnoise.studio.hooks import (
     optimize_chat_history_hook,
     save_last_json_message_hook,
+    save_last_message_hook,
 )
 from neuralnoise.tts import generate_audio_segment
 from neuralnoise.utils import package_root

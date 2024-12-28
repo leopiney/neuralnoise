@@ -28,6 +28,20 @@ def save_last_json_message_hook(filename: str, output_dir: str | Path):
     return hook
 
 
+def save_last_message_hook(filename: str, output_dir: str | Path):
+    os.makedirs(output_dir, exist_ok=True)
+
+    def hook(sender, message, recipient, silent):
+        date_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        filepath = Path(output_dir) / f"{filename}_{date_str}.txt"
+        filepath.write_text(message)
+        logger.debug(f"Saved agent message to {filepath}")
+
+        return message
+
+    return hook
+
+
 Message = dict[str, Any]
 Messages = list[Message]
 

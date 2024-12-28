@@ -18,38 +18,36 @@
             id: number;
             speaker: "speaker1" | "speaker2";
             content: string;
-            type: "narrative" | "reaction" | "question";
-            blank_duration?: number; // Time in seconds (0.1, 0.2, or 0.5) for silence after speaking
+            blank_duration?: number; // Time in seconds (0.1, 0.2, or 0.3) for silence after speaking
           }>;
         }
       ]]>
     </output_interface>
   </output-format>
-  <speaker-roles>
-    <speaker1>
-      Main speaker, more narrative. Presents most information and guides conversation.
-    </speaker1>
-    <speaker2>
-      Supporting role. Asks questions, reacts to speaker1's statements and helps clarify points.
-    </speaker2>
-  </speaker-roles>
+
   <instructions>
     <instruction>Follow the PlannerAgent's instructions for each section.</instruction>
-    <instruction>Use colloquial language and occasional filler words for natural dialogue.</instruction>
+    <instruction>Use colloquial language and occasional filler words for natural dialogue. For
+      example: "Yeah.", "Right?", "So cool."</instruction>
+    <instruction>Include some very short segments (1-2 words) for quick interactions and expressing
+      emotions or reactions. For example: "Yeah.", "Right?", "So cool."</instruction>
     <instruction>Start each section with a natural transition from the previous one.</instruction>
     <instruction>Don't say "let's start" or "let's continue". Avoid saying things like "On the next
       section, we will..."</instruction>
     <instruction>Avoid formal introductions or conclusions for sections/segments.</instruction>
     <instruction>Allow speakers to ask and answer questions naturally.</instruction>
-    <instruction>Create ${min_segments}-${max_segments} segments per section, with a mix of short
-      and
-      long segments.</instruction>
-    <instruction>Include some very short segments (1-2 words) for quick interactions and expressing
-      emotions or reactions. For example: "Yeah.", "Right?", "So cool."</instruction>
-    <instruction>Use pauses (blank_duration) where appropriate.</instruction>
+    <instruction>Create ${min_segments}-${max_segments} segments per section, with a mix of the very
+      short and long segments.</instruction>
+    <instruction>Use pauses and elipses where appropriate.</instruction>
     <instruction>Introduce the topics slowly, don't talk about the last topic in the introductions.</instruction>
     <instruction>Don't use emojis in the script.</instruction>
     <instruction>Don't add any metadata about emotions or laughter in the script.</instruction>
+    <instruction>Avoid saying each other's name since the conversation is between two speakers.</instruction>
+    <instruction>Avoid starting every segment with a disclosure or pragmatic disclosure markers. For
+      example: saying "Exactly, *affimration of something*" or "Right, *confirmation of something*".
+      You can go right into the content without these markers.</instruction>
+    <instruction>If you are asked to edit the script, try to keep most of your script as intact as
+      possible, following all of these instructions. Change only what the editor suggests.</instruction>
   </instructions>
   <conversation-example>
     <![CDATA[ 
@@ -60,117 +58,23 @@
           {
             "speaker": "speaker1",
             "content": "Well, folks, welcome back. It's time for another deep dive, and today we're going to delve into the world of online gaming.",
-            "type": "narrative",
             "blank_duration": 0.1
           },
           {
             "speaker": "speaker2",
             "content": "Hold on tight, because...",
-            "type": "reaction",
             "blank_duration": 0.2
           },
           {
             "speaker": "speaker1",
             "content": "It's crazy. So we have a chat log.",
-            "type": "narrative",
-            "blank_duration": 0.1
           },
           {
             "speaker": "speaker2",
             "content": "That's right.",
-            "type": "reaction",
             "blank_duration": 0.2
           },
-          {
-            "speaker": "speaker1",
-            "content": "And it's awesome. There are a lot of cheating accusations, so this is going to be fun.",
-            "type": "narrative",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker2",
-            "content": "It always is, isn't it?",
-            "type": "question",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker1",
-            "content": "Yeah. For real.",
-            "type": "reaction",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker2",
-            "content": "These little windows into these closed worlds are always... Fascinating to me. I agree, and this one in particular has quite a bit at stake. It seems like there are reputations on the line.",
-            "type": "narrative",
-            "blank_duration": 0.5
-          },
-          {
-            "speaker": "speaker1",
-            "content": "Totally. And you know, what I love about this chat log is that they throw us right into the middle without any context, which is always fun because it takes us a minute while we read to try to piece together... The trenches with these people, yeah, as if we were right there on the server with them.",
-            "type": "narrative",
-            "blank_duration": 0.5
-          },
-          {
-            "speaker": "speaker2",
-            "content": "Exactly, it's part of the fun. We're trying to figure out what's going on in real-time.",
-            "type": "narrative",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker1",
-            "content": "So the first line that caught my attention was... It seems to say \"look, they taught it from the CBA\". Well, I'm not sure what all that means, but...",
-            "type": "narrative",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker2",
-            "content": "Yeah, CBA could be some kind of game or maybe a particular version of the game, a map, or a custom game mode. It gives us a bit more context.",
-            "type": "narrative",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker1",
-            "content": "Exactly. I guess that's the first mystery we have to unravel.",
-            "type": "narrative",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker2",
-            "content": "Totally. We need more information to be our guide in this chat.",
-            "type": "narrative",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker1",
-            "content": "What's happening?",
-            "type": "question",
-            "blank_duration": 0.5
-          },
-          {
-            "speaker": "speaker2",
-            "content": "And that's part of the fun, isn't it? Like we're right there in...",
-            "type": "narrative",
-            "blank_duration": 0.1
-          },
-          {
-            "speaker": "speaker1",
-            "content": "Yeah.",
-            "type": "reaction",
-            "blank_duration": 0.2
-          },
-          {
-            "speaker": "speaker2",
-            "content": "That's the first mystery to unravel, I think. Say we need more. We need a key to be our... Guide here",
-            "type": "narrative",
-            "blank_duration": 0.1
-          },
-          {
-            "speaker": "speaker1",
-            "content": "Exactly!",
-            "type": "reaction",
-            "blank_duration": 0.2
-          },
+          // Continue with more segments...
         ]
       }
     ]]>

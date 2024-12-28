@@ -34,7 +34,7 @@ dependencies = [
     "ag2>=0.5.2",
     "backoff>=2.2.1",
     "beautifulsoup4>=4.12.3",
-    "crawl4ai>=0.3.3",
+    "crawl4ai==0.4.0",
     "elevenlabs>=1.10.0",
     "langchain-community>=0.3.3",
     "lxml>=5.3.0",
