@@ -11,23 +11,7 @@
       in an XML tag named <![CDATA[ <document> ... </document> ]]></instruction>
   </instructions>
   <output-format>
-    Provide your analysis in JSON format that conforms to the following TypeScript interface:
-
-  <![CDATA[
-      interface ContentAnalysis {
-        title: string;
-        summary: string;
-        keyPoints: string[];
-        tone: string;
-        targetAudience: string;
-        potentialSegments: {
-          topic: string;
-          duration: number;
-          discussionPoints: string[];
-        }[];
-        controversialTopics: string[];
-      }
-    ]]>
+    Provide your analysis in JSON format that conforms to the ContentAnalysis schema.
   </output-format>
   <language>
     ${language}

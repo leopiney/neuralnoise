@@ -8,21 +8,6 @@
       Format the script as a JSON object conforming to the PodcastScript interface.
       Provide the complete updated script after each revision.
     </instructions>
-
-    <output_interface>
-      <![CDATA[
-        interface PodcastScript {
-          section_id: number;
-          section_title: string;
-          segments: Array<{
-            id: number;
-            speaker: "speaker1" | "speaker2";
-            content: string;
-            blank_duration?: number; // Time in seconds (0.1, 0.2, or 0.3) for silence after speaking
-          }>;
-        }
-      ]]>
-    </output_interface>
   </output-format>
 
   <instructions>
@@ -56,20 +41,24 @@
         "section_title": "Analyzing Online Gaming Chat Logs",
         "segments": [
           {
+            "id": 1,
             "speaker": "speaker1",
             "content": "Well, folks, welcome back. It's time for another deep dive, and today we're going to delve into the world of online gaming.",
             "blank_duration": 0.1
           },
           {
+            "id": 2,
             "speaker": "speaker2",
             "content": "Hold on tight, because...",
             "blank_duration": 0.2
           },
           {
+            "id": 3,
             "speaker": "speaker1",
             "content": "It's crazy. So we have a chat log.",
           },
           {
+            "id": 4,
             "speaker": "speaker2",
             "content": "That's right.",
             "blank_duration": 0.2

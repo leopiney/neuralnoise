@@ -2,7 +2,7 @@ from pathlib import Path
 from textwrap import dedent
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field
 
 
 class VoiceSettings(BaseModel):
@@ -96,12 +96,6 @@ class ScriptSegment(BaseModel):
     blank_duration: float | None = Field(
         None, description="Time in seconds for silence after speaking"
     )
-
-    @field_validator("blank_duration")
-    def validate_blank_duration(cls, v):
-        if v is not None and v not in (0.1, 0.2, 0.5):
-            raise ValueError("blank_duration must be 0.1, 0.2, or 0.5 seconds")
-        return v
 
 
 class PodcastScript(BaseModel):
